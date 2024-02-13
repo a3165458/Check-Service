@@ -34,7 +34,7 @@ case $option in
     SCRIPT_PATH="$(realpath $0)"
     echo "alias jiankong='$SCRIPT_PATH'" >> ~/.bashrc
     source ~/.bashrc
-    echo "jiankong命令已创建，你现在可以通过输入 jiankong 来运行此脚本。"
+    echo "jiankong命令已创建，请手动运行source ~/.bashrc ，后续使用jiankong即可启动脚本。"
     ;;
   *)
     echo "无效选项，请输入1-7之间的数字。"
