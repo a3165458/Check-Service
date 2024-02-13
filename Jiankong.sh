@@ -19,7 +19,7 @@ case $option in
     systemctl status artelad
     ;;
   3)
-    docker ps | grep zora
+    docker ps
     ;;
   4)
     cd simple-taiko-node && docker-compose logs --tail 20
