@@ -7,9 +7,11 @@ echo "3. Zora"
 echo "4. Taiko"
 echo "5. Avail X Karnot"
 echo "6. Nulink"
-echo "7. 创建jiankong命令"
+echo "7.Avail-light"
+echo "8.Dusk"
+echo "X. 创建jiankong命令"
 
-read -p "请输入选项（1-7）：" option
+read -p "请输入选项（1-X）：" option
 
 case $option in
   1)
@@ -31,12 +33,17 @@ case $option in
     docker logs -f ursula
     ;;
   7)
+    systemctl status availd
+    ;;
+  8)
+    grep "block accepted" /var/log/rusk.log  
+  X)
     SCRIPT_PATH="$(realpath $0)"
     echo "alias jiankong='$SCRIPT_PATH'" >> ~/.bashrc
     source ~/.bashrc
     echo "jiankong命令已创建，请手动运行source ~/.bashrc ，后续使用jiankong即可启动脚本。"
     ;;
   *)
-    echo "无效选项，请输入1-7之间的数字。"
+    echo "无效选项，请输入1-X之间的数字。"
     ;;
 esac
