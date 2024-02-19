@@ -22,7 +22,7 @@ case $option in
     docker ps
     ;;
   4)
-    cd simple-taiko-node && docker-compose logs --tail 20
+    cd simple-taiko-node && docker compose logs --tail 20
     ;;
   5)
     echo "请使用其他设备访问本机公网IP:4000端口"
