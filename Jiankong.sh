@@ -37,6 +37,7 @@ case $option in
     ;;
   8)
     grep "block accepted" /var/log/rusk.log  
+    ;;
   X)
     SCRIPT_PATH="$(realpath $0)"
     echo "alias jiankong='$SCRIPT_PATH'" >> ~/.bashrc
