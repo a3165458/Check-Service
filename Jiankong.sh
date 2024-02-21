@@ -24,34 +24,10 @@ case $option in
     docker ps
     ;;
   4)
-    #!/bin/bash
-
-# 检查 jq 是否已安装
-if ! command -v jq &> /dev/null
-then
-    echo "jq 未安装，正在尝试安装..."
-    # 根据你的系统选择合适的安装命令
-    # Ubuntu/Debian 系统:
-    sudo apt-get update && sudo apt-get install jq
-    # 如果你使用的是RedHat/CentOS，可能需要使用 yum:
-    # sudo yum install jq
-    # 对于Fedora:
-    # sudo dnf install jq
-fi
-
-# 执行 curl 命令并处理结果
-result=$(curl http://localhost:8547 \
+    curl http://localhost:8547 \
   -X POST \
   -H "Content-Type: application/json" \
-  --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' | jq -r '.result')
-
-# 将十六进制的结果转换为十进制
-if [ -n "$result" ]; then
-    echo $((16#$result))
-else
-    echo "未能获取区块号"
-fi
-
+  --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' | jq -r '.result' | xargs printf "%d\n"
     ;;
   5)
     echo "请使用其他设备访问本机公网IP:4000端口"
