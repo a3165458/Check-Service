@@ -24,13 +24,13 @@ case $option in
     docker ps
     ;;
   4)
-    cd simple-taiko-node && docker compose logs --tail 20
-    ;;
-  5)
     curl http://localhost:8547 \
   -X POST \
   -H "Content-Type: application/json" \
   --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' | jq -r '.result' | xargs printf "%d\n"
+    ;;
+  5)
+    echo "请使用其他设备访问本机公网IP:4000端口"
     ;;
   6)
     docker logs -f ursula
