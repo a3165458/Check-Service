@@ -24,10 +24,19 @@ case $option in
     docker ps
     ;;
   4)
-    curl http://localhost:8547 \
+    response=$(curl -s http://localhost:8547 \
   -X POST \
   -H "Content-Type: application/json" \
-  --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' | jq -r '.result' | xargs printf "%d\n"
+  --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}')
+
+# 从响应中提取区块高度的十六进制值
+hex_block_number=$(echo $response | jq -r '.result' | sed 's/0x//')
+
+# 将十六进制值转换为十进制
+dec_block_number=$((16#$hex_block_number))
+
+# 输出当前区块高度
+echo "当前区块高度: $dec_block_number"
     ;;
   5)
     echo "请使用其他设备访问本机公网IP:4000端口"
