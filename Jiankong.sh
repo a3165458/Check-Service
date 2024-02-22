@@ -15,7 +15,7 @@ read -p "请输入选项（1-9）：" option
 
 case $option in
   1)
-    systemctl status babylon
+    systemctl status babylond
     ;;
   2)
     systemctl status artelad
